@@ -1,23 +1,29 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { DocsLayout } from "@/components/docs/DocsLayout";
+import { PageHeader } from "@/components/docs/PageHeader";
 
 const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    console.error("404 — route not found:", location.pathname);
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
-      </div>
-    </div>
+    <DocsLayout>
+      <PageHeader
+        eyebrow="Error · 404"
+        title="Page not found"
+        lead="The page you were looking for doesn't exist or has moved."
+      />
+      <Link
+        to="/"
+        className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
+      >
+        Back to docs home
+      </Link>
+    </DocsLayout>
   );
 };
 
