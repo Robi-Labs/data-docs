@@ -143,6 +143,19 @@
   }
 }
 
+/* Sharp corners across the docs — keep .rounded-full for dots/pills only. */
+@layer utilities {
+  .rounded-sm,
+  .rounded,
+  .rounded-md,
+  .rounded-lg,
+  .rounded-xl,
+  .rounded-2xl,
+  .rounded-3xl {
+    border-radius: 0 !important;
+  }
+}
+
 @layer components {
   .meta-label {
     @apply font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground;
@@ -153,7 +166,7 @@
   }
 
   .surface-card {
-    @apply rounded-xl border border-white/[0.08] bg-[hsl(var(--surface-1))];
+    @apply border border-white/[0.08] bg-[hsl(var(--surface-1))];
   }
 
   .prose-doc {
